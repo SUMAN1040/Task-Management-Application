@@ -24,54 +24,54 @@ const TaskCard = ({ task, onEdit }) => {
   };
 
   return (
-    <div className={`card p-5 flex flex-col gap-3 group relative ${isCompleted ? 'opacity-70 grayscale-[0.2]' : ''}`}>
+    <div className={`bg-white dark:bg-gray-800 rounded-2xl p-5 flex flex-col gap-4 group relative border border-gray-100 dark:border-gray-700/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${isCompleted ? 'opacity-60 bg-gray-50 dark:bg-gray-800/40 grayscale-[0.2]' : ''}`}>
       <div className="flex justify-between items-start gap-4">
         <div className="flex items-start gap-3 flex-1">
           <button 
             onClick={toggleStatus}
-            className="mt-1 text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+            className="mt-0.5 text-gray-300 hover:text-primary-500 dark:text-gray-600 dark:hover:text-primary-400 transition-colors"
           >
-            {isCompleted ? <CheckCircle2 className="text-primary-500" /> : <Circle />}
+            {isCompleted ? <CheckCircle2 className="text-primary-500 dark:text-primary-400" size={22} /> : <Circle size={22} />}
           </button>
           <div>
-            <h3 className={`font-semibold text-lg text-gray-900 dark:text-white ${isCompleted ? 'line-through text-gray-500 dark:text-gray-400' : ''}`}>
+            <h3 className={`font-semibold text-[17px] text-gray-900 dark:text-white leading-tight ${isCompleted ? 'line-through text-gray-500 dark:text-gray-400' : ''}`}>
               {task.title}
             </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1.5 line-clamp-2 leading-relaxed">
               {task.description}
             </p>
           </div>
         </div>
-        <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity absolute right-4 top-4">
+        <div className="flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity absolute right-3 top-3">
           <button 
             onClick={() => onEdit(task)}
-            className="p-1.5 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors"
+            className="p-1.5 text-gray-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-lg transition-colors"
           >
             <Edit2 size={16} />
           </button>
           <button 
             onClick={handleDelete}
-            className="p-1.5 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-colors"
+            className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-colors"
           >
             <Trash2 size={16} />
           </button>
         </div>
       </div>
       
-      <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <span className={`px-2.5 py-1 rounded-full text-xs font-medium border ${priorityColors[task.priority]}`}>
-            {task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}
+      <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className={`px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wider uppercase border ${priorityColors[task.priority]}`}>
+            {task.priority}
           </span>
-          <span className={`text-xs font-medium ${isCompleted ? 'text-primary-600 dark:text-primary-400' : task.status === 'in-progress' ? 'text-purple-600 dark:text-purple-400' : 'text-gray-500'}`}>
-            {task.status.replace('-', ' ').toUpperCase()}
+          <span className={`px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wider uppercase bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 ${isCompleted ? 'text-primary-600 dark:text-primary-400 bg-primary-50 border-primary-100' : task.status === 'in-progress' ? 'text-purple-600 dark:text-purple-400 bg-purple-50 border-purple-100' : 'text-gray-500'}`}>
+            {task.status.replace('-', ' ')}
           </span>
         </div>
         
         {task.dueDate && (
-          <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
+          <div className="flex items-center gap-1.5 text-[13px] font-medium text-gray-400 dark:text-gray-500">
             <Calendar size={14} />
-            <span>{new Date(task.dueDate).toLocaleDateString()}</span>
+            <span>{new Date(task.dueDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}</span>
           </div>
         )}
       </div>
