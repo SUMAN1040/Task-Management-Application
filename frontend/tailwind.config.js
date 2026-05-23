@@ -20,6 +20,17 @@ export default {
           800: '#1e40af',
           900: '#1e3a8a',
         }
+      },
+      animation: {
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'loading-bar': 'loading 2s ease-in-out infinite',
+      },
+      keyframes: {
+        loading: {
+          '0%': { width: '0%', marginLeft: '0%' },
+          '50%': { width: '100%', marginLeft: '0%' },
+          '100%': { width: '0%', marginLeft: '100%' },
+        }
       }
     },
   },
