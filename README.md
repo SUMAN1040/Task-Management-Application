@@ -1,4 +1,4 @@
-# TaskPro - MERN Stack Task Management App
+# TaskPro - Task Management App
 
 TaskPro is a full-stack, production-ready Task Management Application built using the MERN stack (MongoDB, Express.js, React, Node.js). It features a beautiful, responsive user interface styled with Tailwind CSS, secure JWT authentication, and comprehensive task organization tools.
 
