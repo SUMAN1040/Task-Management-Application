@@ -19,6 +19,10 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
 
+// Vercel strips the /api routePrefix, so we mount them at the root as well
+app.use('/auth', authRoutes);
+app.use('/tasks', taskRoutes);
+
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
