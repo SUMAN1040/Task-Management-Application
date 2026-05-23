@@ -132,4 +132,4 @@ Task-Management-Application/
 - `DELETE /api/tasks/:id` - Delete a specific task
 
 ---
-*Developed with the MERN stack.*
+*Developed by Suman Kumar Dey*
